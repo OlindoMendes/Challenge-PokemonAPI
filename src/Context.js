@@ -1,13 +1,18 @@
  import React, { Component } from 'react';
 import { storeProducts, detailProduct } from './data';
+import Pokemon from './Pokemon';
+import sprites from './assets/sprites.png';
 
 const ProductContext = React.createContext();
 //Provider
 //Consumer
 
 class ProductProvider extends Component {
+    
+    
     state = {
         products: [],
+        pokemon:[],
         detailProduct: detailProduct,
         cart: [],
         modalOpen: false ,
@@ -37,15 +42,29 @@ class ProductProvider extends Component {
         const product = this.state.products.find(item => item.id === id);
         return product;
 
-    }
+    };
+
+
+  
 
 
     handleDetail = id => {
+        fetch(`http://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then(res => res.json())
+        .then(data => {
+          const pokemon = new Pokemon(data);
+    
+          this.setState({ pokemon });
+        })
+        .catch(err => console.log(err));
+
         const product = this.getItem(id);
         this.setState(()=> {
             return {detailProduct: product}
         })
     };
+
+    
     addToCart = (id) => {
         let tempProducts = [...this.state.products];
         const index = tempProducts.indexOf(this.getItem(id));
@@ -91,6 +110,8 @@ class ProductProvider extends Component {
         }, ()=>{this.addTotals();
         })
      }; 
+
+
      
     decrement = id => {
         let tempCart = [...this.state.cart];

@@ -24,17 +24,17 @@ class Modal extends Component {
                                 <div className="row">
                                     <div id="modal" className ="col-8 mx-auto col-md-6 col-lg-4
                                     text-center text-capitalize p-5">
-                                        <h5>Item added to the cart</h5>
+                                        <h5>Pokemon adicionado ao carrinho</h5>
                                         <img src={img} className="img-fluid" alt="product"/>
                                         <h5>{title}</h5>
                                         <h5 className="text-muted">price: R$ {price}</h5>
                                         <Link to='/'>
                                             <ButtonContainer onClick={()=>closeModal()}>
-                                                Continue Shopping 
+                                                Continuar a comprar
                                             </ButtonContainer>
                                             <Link to="/cart">
                                             <ButtonContainer onClick={()=>closeModal()}>
-                                                Go to Cart
+                                                Ir para carrinho
                                             </ButtonContainer>
 
                                             </Link>

@@ -11,7 +11,7 @@ class Default extends Component {
                          <h2>Page Not Found</h2>
                          <h3> 
                              The request URL <span className="text-danger">
-                             {this.props.location.pathname}</span>{""} was not found
+                             {this.props.location.pathname}</span>{""} Pokemon não encontrado
                          </h3>
                     </div>
                 </div>
